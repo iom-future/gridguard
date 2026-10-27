@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { ArrowRight, ChevronDown, ShieldCheck, Cpu, Activity, Zap } from 'lucide-react'
+import { ArrowRight, ChevronDown, ShieldCheck, Cpu, Zap } from 'lucide-react'
 import DashboardPreview from '../components/DashboardPreview'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
@@ -40,13 +40,6 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Top Copy */}
         <div className="text-center max-w-3xl mx-auto space-y-6">
-          <div className="hero-fade inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-panel/80 border border-line text-xs font-semibold text-teal tracking-wide shadow-inner">
-            <Activity className="w-3.5 h-3.5 text-teal" />
-            <span>INFRASTRUCTURE INTELLIGENCE</span>
-            <span className="text-muted/60">•</span>
-            <span className="text-muted font-normal">Know Before It Fails</span>
-          </div>
-
           <h1 className="hero-fade text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-text leading-[1.12]">
             Identify equipment risks.{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue via-teal to-blue">
