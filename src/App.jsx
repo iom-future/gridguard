@@ -1,122 +1,44 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { Shield } from 'lucide-react'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <main className="min-h-screen bg-navy text-text flex flex-col items-center justify-center p-6 antialiased">
+      <div className="w-full max-w-lg rounded-card bg-navy-2 border border-line p-8 shadow-xl text-center space-y-6">
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-panel text-teal border border-line mx-auto">
+          <Shield className="w-7 h-7" />
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+
+        <div className="space-y-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-panel/60 border border-line text-xs font-medium text-teal">
+            <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
+            Infrastructure Intelligence
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight text-text">
+            GridGuard AI
+          </h1>
+          <p className="text-sm font-medium text-blue">
+            Know Before It Fails.
+          </p>
+          <p className="text-sm text-muted">
+            React setup and Tailwind CSS v4 design system configured. Ready for landing page implementation.
           </p>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+        <div className="pt-4 border-t border-line grid grid-cols-3 gap-2 text-xs text-muted">
+          <div className="p-2.5 rounded-lg bg-panel/50 border border-line">
+            <span className="block font-semibold text-text">React 19</span>
+            <span>Framework</span>
+          </div>
+          <div className="p-2.5 rounded-lg bg-panel/50 border border-line">
+            <span className="block font-semibold text-teal">Tailwind v4</span>
+            <span>Styling</span>
+          </div>
+          <div className="p-2.5 rounded-lg bg-panel/50 border border-line">
+            <span className="block font-semibold text-blue">Vite</span>
+            <span>Bundler</span>
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      </div>
+    </main>
   )
 }
-
-export default App
