@@ -6,6 +6,7 @@ import HowItWorks from './sections/HowItWorks'
 import Features from './sections/Features'
 import IntelligenceLoop from './sections/IntelligenceLoop'
 import Audience from './sections/Audience'
+import Team from './sections/Team'
 import EarlyAccess from './sections/EarlyAccess'
 import FAQ from './sections/FAQ'
 import Footer from './sections/Footer'
@@ -39,10 +40,13 @@ export default function App() {
         {/* H. Intended Audiences */}
         <Audience />
 
-        {/* I. Early Access / Pilot CTA Section */}
+        {/* I. Leadership & Engineering Team */}
+        <Team />
+
+        {/* J. Early Access / Pilot CTA Section */}
         <EarlyAccess />
 
-        {/* J. Frequently Answered Questions */}
+        {/* K. Frequently Answered Questions */}
         <FAQ />
       </main>
 

@@ -70,6 +70,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a href="#team" className="hover:text-text transition-colors">
+                  Team & Leadership
+                </a>
+              </li>
+              <li>
                 <a href="#faq" className="hover:text-text transition-colors">
                   Frequently Answered Questions
                 </a>

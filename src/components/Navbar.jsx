@@ -29,6 +29,7 @@ export default function Navbar() {
     { label: 'Capabilities', href: '#capabilities' },
     { label: 'Intelligence Loop', href: '#intelligence-loop' },
     { label: 'Audiences', href: '#audiences' },
+    { label: 'Team', href: '#team' },
     { label: 'FAQ', href: '#faq' },
   ]
 
