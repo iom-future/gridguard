@@ -12,6 +12,7 @@ import {
   Zap,
   Info,
   ChevronRight,
+  ChevronLeft,
   RefreshCw,
 } from 'lucide-react'
 
@@ -104,12 +105,15 @@ const sampleAssets = [
 
 export default function DashboardPreview() {
   const [selectedAssetId, setSelectedAssetId] = useState('TX-402')
+  // 0: Main Telemetry Deep-Dive, 1: Prioritized Risk Queue
+  const [carouselSlide, setCarouselSlide] = useState(0)
+
   const currentAsset = sampleAssets.find((a) => a.id === selectedAssetId) || sampleAssets[0]
 
   return (
     <div className="w-full rounded-card bg-navy-2/95 border border-line shadow-2xl overflow-hidden backdrop-blur-md">
       {/* Dashboard Top Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3.5 border-b border-line bg-panel/60">
+      <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3 border-b border-line bg-panel/60">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
             <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
@@ -131,116 +135,113 @@ export default function DashboardPreview() {
         </div>
       </div>
 
-      {/* Fleet KPI Row */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 sm:p-5 border-b border-line bg-navy/40">
-        <div className="p-3.5 rounded-xl bg-panel/40 border border-line">
-          <div className="flex items-center justify-between text-xs text-muted mb-1">
-            <span>Monitored Assets</span>
-            <Layers className="w-3.5 h-3.5 text-blue" />
+      {/* Fleet KPI Row - Kept strictly in a single compact row across all screen sizes */}
+      <div className="grid grid-cols-4 gap-1.5 sm:gap-3 p-2.5 sm:p-4 border-b border-line bg-navy/40">
+        <div className="p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
+          <div className="flex items-center justify-between text-[10px] sm:text-xs text-muted mb-0.5">
+            <span className="truncate">Assets</span>
+            <Layers className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue shrink-0 ml-1" />
           </div>
-          <div className="text-xl sm:text-2xl font-bold text-text">1,428</div>
-          <div className="text-[11px] text-teal mt-0.5 flex items-center gap-1">
-            <CheckCircle2 className="w-3 h-3" /> 98.4% Nominal Fleet
+          <div className="text-sm sm:text-xl font-bold text-text">1,428</div>
+          <div className="text-[9px] sm:text-[11px] text-teal mt-0.5 truncate flex items-center gap-0.5 sm:gap-1">
+            <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" />
+            <span>98.4% Nominal</span>
           </div>
         </div>
 
-        <div className="p-3.5 rounded-xl bg-panel/40 border border-line">
-          <div className="flex items-center justify-between text-xs text-muted mb-1">
-            <span>Critical Inspection Queue</span>
-            <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
+        <div className="p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
+          <div className="flex items-center justify-between text-[10px] sm:text-xs text-muted mb-0.5">
+            <span className="truncate">Critical Queue</span>
+            <AlertTriangle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-400 shrink-0 ml-1" />
           </div>
-          <div className="text-xl sm:text-2xl font-bold text-amber-400">3</div>
-          <div className="text-[11px] text-muted mt-0.5">High failure probability</div>
+          <div className="text-sm sm:text-xl font-bold text-amber-400">3</div>
+          <div className="text-[9px] sm:text-[11px] text-muted mt-0.5 truncate">High Risk</div>
         </div>
 
-        <div className="p-3.5 rounded-xl bg-panel/40 border border-line">
-          <div className="flex items-center justify-between text-xs text-muted mb-1">
-            <span>Early Anomaly Drift</span>
-            <TrendingUp className="w-3.5 h-3.5 text-blue" />
+        <div className="p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
+          <div className="flex items-center justify-between text-[10px] sm:text-xs text-muted mb-0.5">
+            <span className="truncate">Early Drift</span>
+            <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue shrink-0 ml-1" />
           </div>
-          <div className="text-xl sm:text-2xl font-bold text-text">14</div>
-          <div className="text-[11px] text-blue mt-0.5">Tracked pre-threshold</div>
+          <div className="text-sm sm:text-xl font-bold text-text">14</div>
+          <div className="text-[9px] sm:text-[11px] text-blue mt-0.5 truncate">Tracked</div>
         </div>
 
-        <div className="p-3.5 rounded-xl bg-panel/40 border border-line">
-          <div className="flex items-center justify-between text-xs text-muted mb-1">
-            <span>Unplanned Outages Avoided</span>
-            <Zap className="w-3.5 h-3.5 text-teal" />
+        <div className="p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
+          <div className="flex items-center justify-between text-[10px] sm:text-xs text-muted mb-0.5">
+            <span className="truncate">Avoided Outages</span>
+            <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-teal shrink-0 ml-1" />
           </div>
-          <div className="text-xl sm:text-2xl font-bold text-teal">24</div>
-          <div className="text-[11px] text-muted mt-0.5">Through early intervention</div>
+          <div className="text-sm sm:text-xl font-bold text-teal">24</div>
+          <div className="text-[9px] sm:text-[11px] text-muted mt-0.5 truncate">Intervened</div>
         </div>
       </div>
 
-      {/* Main Body: Asset Queue & Detailed Telemetry Panel */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-line">
-        {/* Left: Risk Queue List (5 cols) */}
-        <div className="lg:col-span-5 p-4 sm:p-5 flex flex-col gap-3">
-          <div className="flex items-center justify-between mb-1">
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted">
-              Prioritized Risk Queue
+      {/* Mobile/Tablet Carousel Navigation Bar (Hidden on desktop) */}
+      <div className="flex lg:hidden items-center justify-between px-3 sm:px-5 py-2.5 bg-panel/70 border-b border-line text-xs">
+        <div className="flex items-center gap-1.5 p-1 rounded-lg bg-navy/90 border border-line">
+          <button
+            type="button"
+            onClick={() => setCarouselSlide(0)}
+            className={`px-3 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
+              carouselSlide === 0
+                ? 'bg-blue text-white shadow-xs'
+                : 'text-muted hover:text-text'
+            }`}
+          >
+            Telemetry View
+          </button>
+          <button
+            type="button"
+            onClick={() => setCarouselSlide(1)}
+            className={`px-3 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 ${
+              carouselSlide === 1
+                ? 'bg-blue text-white shadow-xs'
+                : 'text-muted hover:text-text'
+            }`}
+          >
+            <span>Risk Queue</span>
+            <span className="w-4 h-4 rounded-full bg-amber-400/20 text-amber-400 text-[10px] flex items-center justify-center font-bold">
+              3
             </span>
-            <span className="text-[11px] text-muted">Click asset to inspect</span>
-          </div>
-
-          <div className="space-y-2.5">
-            {sampleAssets.map((asset) => {
-              const isSelected = asset.id === selectedAssetId
-              return (
-                <button
-                  key={asset.id}
-                  type="button"
-                  onClick={() => setSelectedAssetId(asset.id)}
-                  className={`w-full text-left p-3.5 rounded-xl border transition-all text-xs cursor-pointer ${
-                    isSelected
-                      ? 'bg-panel border-blue/60 shadow-md ring-1 ring-blue/30'
-                      : 'bg-panel/30 border-line hover:bg-panel/60 hover:border-line/80'
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-bold text-sm text-text">{asset.id}</span>
-                        <span
-                          className={`px-2 py-0.5 rounded-md text-[10px] font-semibold border ${asset.statusColor}`}
-                        >
-                          {asset.status}
-                        </span>
-                      </div>
-                      <div className="text-xs text-text/90 font-medium mt-1 line-clamp-1">
-                        {asset.name}
-                      </div>
-                      <div className="text-[11px] text-muted mt-0.5">{asset.location}</div>
-                    </div>
-                    <div className="text-right shrink-0">
-                      <div className="text-xs text-muted">Risk Index</div>
-                      <div
-                        className={`text-base font-bold ${
-                          asset.riskScore > 75
-                            ? 'text-red-400'
-                            : asset.riskScore > 50
-                            ? 'text-amber-400'
-                            : 'text-teal'
-                        }`}
-                      >
-                        {asset.riskScore}/100
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mt-2.5 pt-2 border-t border-line/50 flex items-center justify-between text-[11px] text-muted">
-                    <span className="line-clamp-1 text-muted/90">
-                      ⚡ {asset.primaryAnomaly}
-                    </span>
-                    <ChevronRight className="w-3.5 h-3.5 text-muted shrink-0 ml-1" />
-                  </div>
-                </button>
-              )
-            })}
-          </div>
+          </button>
         </div>
 
-        {/* Right: Selected Asset Deep-Dive & Telemetry (7 cols) */}
-        <div className="lg:col-span-7 p-4 sm:p-5 flex flex-col justify-between gap-5 bg-navy/30">
+        <div className="flex items-center gap-1.5 text-muted">
+          <span className="text-[11px] text-muted/80">Swipe / Switch:</span>
+          <button
+            type="button"
+            onClick={() => setCarouselSlide(carouselSlide === 0 ? 1 : 0)}
+            className="p-1 rounded-md bg-navy border border-line text-muted hover:text-text transition-colors cursor-pointer"
+            aria-label="Previous view"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <span className="text-[11px] font-mono text-text">
+            {carouselSlide + 1}/2
+          </span>
+          <button
+            type="button"
+            onClick={() => setCarouselSlide(carouselSlide === 0 ? 1 : 0)}
+            className="p-1 rounded-md bg-navy border border-line text-muted hover:text-text transition-colors cursor-pointer"
+            aria-label="Next view"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* Main Body:
+          - Desktop (lg+): Both panels side-by-side (Left: Main Telemetry Deep-Dive, Right: Risk Queue)
+          - Mobile/Tablet (<lg): Carousel views between Slide 0 (Telemetry) and Slide 1 (Risk Queue)
+      */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:divide-x divide-line">
+        {/* PANEL 1 (DESKTOP LEFT, 7 cols): Selected Asset Deep-Dive & Telemetry */}
+        <div
+          className={`p-4 sm:p-5 flex-col justify-between gap-5 bg-navy/30 lg:col-span-7 ${
+            carouselSlide === 0 ? 'flex' : 'hidden lg:flex'
+          }`}
+        >
           <div>
             {/* Header info */}
             <div className="flex flex-wrap items-start justify-between gap-2 pb-3 border-b border-line">
@@ -294,7 +295,7 @@ export default function DashboardPreview() {
               <div className="flex items-center justify-between text-xs mb-2">
                 <span className="font-semibold text-text flex items-center gap-1.5">
                   <TrendingUp className="w-3.5 h-3.5 text-blue" />
-                  Telemetry Drift vs. Dynamic Operational Baseline (Last 24h)
+                  Telemetry Drift vs. Dynamic Baseline (Last 24h)
                 </span>
                 <span className="text-[11px] text-muted flex items-center gap-3">
                   <span className="inline-flex items-center gap-1">
@@ -354,13 +355,13 @@ export default function DashboardPreview() {
                     strokeWidth="2.5"
                   />
 
-                  {/* Anomaly Dot */}
-                  {currentAsset.riskScore > 50 && (
-                    <g>
-                      <circle cx="400" cy="18" r="4.5" fill="#55d3bd" />
-                      <circle cx="400" cy="18" r="8" fill="#55d3bd" opacity="0.3" className="animate-ping" />
-                    </g>
-                  )}
+                  {/* Current Reading End Point Dot (Static, no pulsing animation) */}
+                  <circle
+                    cx="396"
+                    cy={currentAsset.riskScore > 50 ? 18 : 64}
+                    r="3.5"
+                    fill="#55d3bd"
+                  />
                 </svg>
 
                 <div className="flex justify-between text-[10px] text-muted mt-1 px-1">
@@ -392,6 +393,87 @@ export default function DashboardPreview() {
               <span>Dispatch Ticket</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </a>
+          </div>
+        </div>
+
+        {/* PANEL 2 (DESKTOP RIGHT, 5 cols): Prioritized Risk Queue */}
+        <div
+          className={`p-4 sm:p-5 flex-col gap-3 lg:col-span-5 ${
+            carouselSlide === 1 ? 'flex' : 'hidden lg:flex'
+          }`}
+        >
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-xs font-semibold uppercase tracking-wider text-muted">
+              Prioritized Risk Queue
+            </span>
+            <span className="text-[11px] text-muted">Click asset to inspect</span>
+          </div>
+
+          <div className="space-y-2.5">
+            {sampleAssets.map((asset) => {
+              const isSelected = asset.id === selectedAssetId
+              return (
+                <button
+                  key={asset.id}
+                  type="button"
+                  onClick={() => {
+                    setSelectedAssetId(asset.id)
+                    // On mobile, clicking switches to telemetry view
+                    setCarouselSlide(0)
+                  }}
+                  className={`w-full text-left p-3.5 rounded-xl border transition-all text-xs cursor-pointer ${
+                    isSelected
+                      ? 'bg-panel border-blue/60 shadow-md ring-1 ring-blue/30'
+                      : 'bg-panel/30 border-line hover:bg-panel/60 hover:border-line/80'
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-sm text-text">{asset.id}</span>
+                        <span
+                          className={`px-2 py-0.5 rounded-md text-[10px] font-semibold border ${asset.statusColor}`}
+                        >
+                          {asset.status}
+                        </span>
+                      </div>
+                      <div className="text-xs text-text/90 font-medium mt-1 line-clamp-1">
+                        {asset.name}
+                      </div>
+                      <div className="text-[11px] text-muted mt-0.5">{asset.location}</div>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <div className="text-xs text-muted">Risk Index</div>
+                      <div
+                        className={`text-base font-bold ${
+                          asset.riskScore > 75
+                            ? 'text-red-400'
+                            : asset.riskScore > 50
+                            ? 'text-amber-400'
+                            : 'text-teal'
+                        }`}
+                      >
+                        {asset.riskScore}/100
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-2.5 pt-2 border-t border-line/50 flex items-center justify-between text-[11px] text-muted">
+                    <span className="line-clamp-1 text-muted/90">
+                      ⚡ {asset.primaryAnomaly}
+                    </span>
+                    <span className="text-blue flex items-center gap-0.5 shrink-0 ml-1 font-medium">
+                      <span>Inspect</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Quick Tip for Carousel View */}
+          <div className="lg:hidden p-3 rounded-lg bg-panel/40 border border-line text-[11px] text-muted text-center">
+            Tap any asset above to switch to its live telemetry analysis.
           </div>
         </div>
       </div>

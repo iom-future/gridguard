@@ -1,40 +1,36 @@
-import { Database, Binary, BarChart3, Wrench, ArrowDown, ArrowRight } from 'lucide-react'
+import { Database, Binary, BarChart3, Wrench, ArrowRight } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading'
 
 export default function HowItWorks() {
   const steps = [
     {
-      step: '01',
       icon: Database,
       title: 'Telemetry Ingestion & Normalization',
-      badge: 'Unified Data Fabric',
+      badge: 'Data Fabric',
       description:
-        'GridGuard ingests high-frequency data from existing SCADA systems, vibration monitors, thermal sensors, and inspection logs without requiring proprietary hardware replacement.',
+        'GridGuard ingests high-frequency data from existing SCADA systems, vibration monitors, thermal sensors, and inspection logs without proprietary hardware replacement.',
       details: ['Modbus / OPC-UA / MQTT support', 'Time-series synchronization', 'Sensor health validation'],
     },
     {
-      step: '02',
       icon: Binary,
       title: 'Dynamic Baseline Learning',
-      badge: 'Operational Context',
+      badge: 'Context Engine',
       description:
-        'Instead of brittle static thresholds, the platform models baseline operational behavior calibrated to each asset’s ambient weather, duty load, and thermal dissipation envelope.',
+        'Instead of brittle static thresholds, the platform models baseline operational behavior calibrated to each asset’s ambient weather, duty load, and thermal envelope.',
       details: ['Load-adjusted tolerances', 'Environmental normalization', 'Seasonal thermal modeling'],
     },
     {
-      step: '03',
       icon: BarChart3,
       title: 'Multi-Factor Risk Scoring',
-      badge: 'Risk Quantification',
+      badge: 'Risk Analytics',
       description:
         'Correlates subtle deviations across multiple concurrent signals (e.g. slight temperature rise + harmonic flux) to calculate an actionable 0-100 failure probability score.',
       details: ['Cross-sensor correlation', 'Degradation curve tracking', 'False-positive elimination'],
     },
     {
-      step: '04',
       icon: Wrench,
       title: 'Actionable Inspection Dispatches',
-      badge: 'Targeted Action',
+      badge: 'Field Action',
       description:
         'Outputs ranked inspection tickets directly to maintenance teams complete with probable fault modes, sensor evidence snippets, and recommended diagnostic tests.',
       details: ['Ranked by consequence', 'Diagnostic evidence briefs', 'Work-order system export'],
@@ -43,7 +39,8 @@ export default function HowItWorks() {
 
   return (
     <section id="how-it-works" className="py-20 lg:py-28 bg-navy border-b border-line relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Expanded container width to give cards maximum horizontal breathing room on desktop */}
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <SectionHeading
           theme="dark"
           eyebrow="System Workflow"
@@ -51,44 +48,42 @@ export default function HowItWorks() {
           description="A calibrated four-stage intelligence pipeline designed specifically for high-consequence energy and industrial environments."
         />
 
-        {/* 4 Connected Process Cards */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-          {steps.map((item, index) => {
+        {/* 1 col on mobile, 2x2 on md, single 4-card row on lg/desktop */}
+        <div className="mt-14 lg:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 xl:gap-6">
+          {steps.map((item) => {
             const Icon = item.icon
             return (
               <div
-                key={item.step}
-                className="relative rounded-card bg-navy-2 border border-line p-6 flex flex-col justify-between hover:border-blue/40 transition-all group"
+                key={item.title}
+                className="relative rounded-card bg-navy-2 border border-line p-5 sm:p-6 xl:p-7 flex flex-col justify-between hover:border-blue/40 transition-all group shadow-xl"
               >
-                {/* Step indicator header */}
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-teal to-blue">
-                      {item.step}
-                    </span>
-                    <span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-panel text-teal border border-line">
+                  {/* Card Header */}
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <span className="text-[10px] xl:text-[11px] uppercase tracking-wider font-semibold px-2.5 py-1 rounded-md bg-panel text-teal border border-line">
                       {item.badge}
                     </span>
+
+                    <div className="w-10 h-10 xl:w-11 xl:h-11 rounded-xl bg-panel border border-line flex items-center justify-center text-blue group-hover:text-teal group-hover:border-teal/30 transition-colors shrink-0 shadow-inner">
+                      <Icon className="w-5 h-5" />
+                    </div>
                   </div>
 
-                  <div className="w-11 h-11 rounded-xl bg-panel border border-line flex items-center justify-center text-blue mb-4 group-hover:text-teal group-hover:border-teal/30 transition-colors">
-                    <Icon className="w-5 h-5" />
-                  </div>
-
-                  <h3 className="text-base sm:text-lg font-bold text-text mb-2">
+                  {/* Title & Description */}
+                  <h3 className="text-base xl:text-lg font-bold text-text mb-2.5 tracking-tight leading-snug">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-muted leading-relaxed mb-4">
+                  <p className="text-xs xl:text-sm text-muted leading-relaxed mb-5">
                     {item.description}
                   </p>
                 </div>
 
-                {/* Sub-details list */}
-                <div className="pt-4 border-t border-line/60 space-y-1.5 text-[11px] text-muted">
+                {/* Sub-details List */}
+                <div className="pt-4 border-t border-line/60 space-y-2">
                   {item.details.map((detail) => (
-                    <div key={detail} className="flex items-center gap-1.5">
-                      <span className="w-1 h-1 rounded-full bg-teal shrink-0" />
+                    <div key={detail} className="flex items-start gap-2 text-[11px] xl:text-xs text-muted/90">
+                      <span className="w-1.5 h-1.5 rounded-full bg-teal shrink-0 mt-1" />
                       <span>{detail}</span>
                     </div>
                   ))}
