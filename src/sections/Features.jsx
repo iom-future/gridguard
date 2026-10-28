@@ -5,7 +5,6 @@ import {
   FileText,
   ClipboardCheck,
   ShieldAlert,
-  ArrowUpRight,
 } from 'lucide-react'
 import SectionHeading from '../components/SectionHeading'
 
@@ -90,11 +89,6 @@ export default function Features() {
                   <p className="text-xs sm:text-sm text-muted leading-relaxed">
                     {cap.description}
                   </p>
-                </div>
-
-                <div className="mt-5 pt-3.5 border-t border-line/40 flex items-center justify-between text-xs text-blue group-hover:text-teal transition-colors">
-                  <span className="font-medium">Operational capability</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
             )

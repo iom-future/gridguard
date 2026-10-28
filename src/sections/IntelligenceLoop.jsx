@@ -223,31 +223,32 @@ export default function IntelligenceLoop() {
           </div>
 
           {/* Closed-Loop Return Banner */}
-          <div className="mt-16 p-6 sm:p-8 rounded-card bg-navy-2/95 border border-line shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-panel border border-line flex items-center justify-center text-teal shrink-0 mt-0.5 shadow-inner">
-                <RefreshCw className="w-6 h-6 text-teal animate-spin-slow" />
+          <div className="mt-16 p-6 sm:p-8 rounded-card bg-navy-2/95 border border-line shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 overflow-hidden">
+            {/* Spinning continuous loop background watermark */}
+            <RefreshCw
+              className="absolute -left-6 -top-6 sm:-left-10 sm:-top-10 w-44 h-44 sm:w-56 sm:h-56 text-teal/10 animate-spin-slow pointer-events-none select-none"
+              aria-hidden="true"
+            />
+
+            <div className="space-y-1 relative z-10 max-w-2xl">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-teal">
+                  Closed-Loop Architecture
+                </span>
+                <span className="text-muted/60">•</span>
+                <span className="text-xs text-muted">Compounding Fleet Precision</span>
               </div>
-              <div className="space-y-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-teal">
-                    Closed-Loop Architecture
-                  </span>
-                  <span className="text-muted/60">•</span>
-                  <span className="text-xs text-muted">Compounding Fleet Precision</span>
-                </div>
-                <h4 className="text-base sm:text-lg font-bold text-text">
-                  Inspection Findings Permanently Eliminate Recurring False Alarms
-                </h4>
-                <p className="text-xs sm:text-sm text-muted leading-relaxed">
-                  Unlike traditional SCADA threshold alarms that fire endlessly on normal peak loads, GridGuard incorporates verified field inspection outcomes to continuously refine individual component baseline tolerances.
-                </p>
-              </div>
+              <h4 className="text-base sm:text-lg font-bold text-text">
+                Inspection Findings Permanently Eliminate Recurring False Alarms
+              </h4>
+              <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                Unlike traditional SCADA threshold alarms that fire endlessly on normal peak loads, GridGuard incorporates verified field inspection outcomes to continuously refine individual component baseline tolerances.
+              </p>
             </div>
 
             <a
               href="#early-access"
-              className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-blue-strong hover:bg-blue text-white text-xs font-semibold shadow-md shadow-blue-strong/20 transition-all active:scale-[0.99]"
+              className="relative z-10 shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-blue-strong hover:bg-blue text-white text-xs font-semibold shadow-md shadow-blue-strong/20 transition-all active:scale-[0.99]"
             >
               <span>Explore Pilot Trial</span>
               <ArrowRight className="w-4 h-4" />
