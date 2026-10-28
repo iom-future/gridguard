@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Shield, Menu, X, ArrowRight, Activity } from 'lucide-react'
+import { Menu, X, ArrowRight } from 'lucide-react'
+import gridguardLogo from '../assets/gridguard-logo-white.png'
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -13,18 +14,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && mobileMenuOpen) {
-        setMobileMenuOpen(false)
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [mobileMenuOpen])
-
   const navLinks = [
-    { label: 'Platform', href: '#platform' },
     { label: 'How It Works', href: '#how-it-works' },
     { label: 'Capabilities', href: '#capabilities' },
     { label: 'Intelligence Loop', href: '#intelligence-loop' },
@@ -43,23 +33,17 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18">
-          {/* Brand Logo */}
+          {/* Brand Logo Image (links to #platform) */}
           <a
-            href="#"
-            className="flex items-center gap-2.5 text-text hover:text-white transition-colors group"
-            aria-label="GridGuard AI Home"
+            href="#platform"
+            className="flex items-center hover:opacity-90 transition-opacity"
+            aria-label="GridGuard AI Platform"
           >
-            <div className="w-9 h-9 rounded-lg bg-panel border border-line flex items-center justify-center text-teal shadow-inner group-hover:border-teal/40 transition-colors">
-              <Shield className="w-5 h-5" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-lg tracking-tight leading-none text-text">
-                GridGuard<span className="text-teal ml-0.5">AI</span>
-              </span>
-              <span className="text-[10px] text-muted tracking-wider uppercase font-semibold leading-none mt-1">
-                Infrastructure Intel
-              </span>
-            </div>
+            <img
+              src={gridguardLogo}
+              alt="GridGuard AI"
+              className="h-10 sm:h-12 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Navigation */}

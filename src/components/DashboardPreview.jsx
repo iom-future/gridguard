@@ -121,59 +121,59 @@ export default function DashboardPreview() {
             <span className="w-2.5 h-2.5 rounded-full bg-teal/80" />
           </div>
           <div className="h-4 w-px bg-line" />
-          <span className="text-xs font-semibold tracking-wide text-text flex items-center gap-1.5">
-            <Activity className="w-3.5 h-3.5 text-teal" />
-            GridGuard Operational Intelligence Console
-          </span>
+          <span className="text-[11px] text-muted/80">Illustrative Platform View</span>
         </div>
         <div className="flex items-center gap-3 text-xs text-muted">
           <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-navy/60 border border-line text-[11px] text-teal">
             <span className="w-1.5 h-1.5 rounded-full bg-teal animate-pulse" />
             Telemetry Stream Live
           </span>
-          <span className="text-[11px] text-muted/80">Illustrative Platform View</span>
+          <span className="text-xs font-semibold tracking-wide text-text flex items-center gap-1.5">
+            <Activity className="w-3.5 h-3.5 text-teal" />
+            GridGuard Operational Intelligence Console
+          </span>
         </div>
       </div>
 
       {/* Fleet KPI Row - Kept strictly in a single compact row across all screen sizes */}
       <div className="grid grid-cols-4 gap-1.5 sm:gap-3 p-2.5 sm:p-4 border-b border-line bg-navy/40">
-        <div className="p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
-          <div className="flex items-center justify-between text-[10px] sm:text-xs text-muted mb-0.5">
-            <span className="truncate">Assets</span>
-            <Layers className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue shrink-0 ml-1" />
-          </div>
-          <div className="text-sm sm:text-xl font-bold text-text">1,428</div>
-          <div className="text-[9px] sm:text-[11px] text-teal mt-0.5 truncate flex items-center gap-0.5 sm:gap-1">
-            <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" />
-            <span>98.4% Nominal</span>
+        <div className="relative overflow-hidden p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
+          <Layers className="absolute right-1.5 top-1.5 sm:right-2 sm:top-2 w-7 h-7 sm:w-9 sm:h-9 text-blue/20 pointer-events-none" />
+          <div className="relative z-10">
+            <div className="text-[10px] sm:text-xs text-muted mb-0.5 truncate">Assets</div>
+            <div className="text-sm sm:text-xl font-bold text-text">1,428</div>
+            <div className="text-[9px] sm:text-[11px] text-teal mt-0.5 truncate flex items-center gap-0.5 sm:gap-1">
+              <CheckCircle2 className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" />
+              <span>98.4% Nominal</span>
+            </div>
           </div>
         </div>
 
-        <div className="p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
-          <div className="flex items-center justify-between text-[10px] sm:text-xs text-muted mb-0.5">
-            <span className="truncate">Critical Queue</span>
-            <AlertTriangle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-400 shrink-0 ml-1" />
+        <div className="relative overflow-hidden p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
+          <AlertTriangle className="absolute right-1.5 top-1.5 sm:right-2 sm:top-2 w-7 h-7 sm:w-9 sm:h-9 text-amber-400/20 pointer-events-none" />
+          <div className="relative z-10">
+            <div className="text-[10px] sm:text-xs text-muted mb-0.5 truncate">Critical Queue</div>
+            <div className="text-sm sm:text-xl font-bold text-amber-400">3</div>
+            <div className="text-[9px] sm:text-[11px] text-muted mt-0.5 truncate">High Risk</div>
           </div>
-          <div className="text-sm sm:text-xl font-bold text-amber-400">3</div>
-          <div className="text-[9px] sm:text-[11px] text-muted mt-0.5 truncate">High Risk</div>
         </div>
 
-        <div className="p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
-          <div className="flex items-center justify-between text-[10px] sm:text-xs text-muted mb-0.5">
-            <span className="truncate">Early Drift</span>
-            <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue shrink-0 ml-1" />
+        <div className="relative overflow-hidden p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
+          <TrendingUp className="absolute right-1.5 top-1.5 sm:right-2 sm:top-2 w-7 h-7 sm:w-9 sm:h-9 text-blue/20 pointer-events-none" />
+          <div className="relative z-10">
+            <div className="text-[10px] sm:text-xs text-muted mb-0.5 truncate">Early Drift</div>
+            <div className="text-sm sm:text-xl font-bold text-text">14</div>
+            <div className="text-[9px] sm:text-[11px] text-blue mt-0.5 truncate">Tracked</div>
           </div>
-          <div className="text-sm sm:text-xl font-bold text-text">14</div>
-          <div className="text-[9px] sm:text-[11px] text-blue mt-0.5 truncate">Tracked</div>
         </div>
 
-        <div className="p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
-          <div className="flex items-center justify-between text-[10px] sm:text-xs text-muted mb-0.5">
-            <span className="truncate">Avoided Outages</span>
-            <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-teal shrink-0 ml-1" />
+        <div className="relative overflow-hidden p-2 sm:p-3 rounded-xl bg-panel/40 border border-line">
+          <Zap className="absolute right-1.5 top-1.5 sm:right-2 sm:top-2 w-7 h-7 sm:w-9 sm:h-9 text-teal/20 pointer-events-none" />
+          <div className="relative z-10">
+            <div className="text-[10px] sm:text-xs text-muted mb-0.5 truncate">Avoided Outages</div>
+            <div className="text-sm sm:text-xl font-bold text-teal">24</div>
+            <div className="text-[9px] sm:text-[11px] text-muted mt-0.5 truncate">Intervened</div>
           </div>
-          <div className="text-sm sm:text-xl font-bold text-teal">24</div>
-          <div className="text-[9px] sm:text-[11px] text-muted mt-0.5 truncate">Intervened</div>
         </div>
       </div>
 
@@ -208,7 +208,6 @@ export default function DashboardPreview() {
         </div>
 
         <div className="flex items-center gap-1.5 text-muted">
-          <span className="text-[11px] text-muted/80">Swipe / Switch:</span>
           <button
             type="button"
             onClick={() => setCarouselSlide(carouselSlide === 0 ? 1 : 0)}

@@ -9,12 +9,12 @@ import zainabImg from '../assets/images/team_zainab.jpg'
 export default function Team() {
   const teamMembers = [
     {
-      name: 'Stephen Igoche',
+      name: 'Emeka Nwosu',
       role: 'Chief Executive Officer & Founder',
       roleColor: 'text-indigo-400',
       domain: 'Grid Architecture & Strategy',
       image: stephenImg,
-      bio: 'Visionary infrastructure technology executive and former power grid systems architect with over 14 years pioneering condition-monitoring frameworks for transmission utilities. Driven by the catastrophic costs of unranked alarm floods, Stephen founded GridGuard AI to dematerialize operational blind spots into decisive, predictive maintenance intelligence.',
+      bio: 'Visionary infrastructure technology executive and former power grid systems architect with over 14 years pioneering condition-monitoring frameworks for transmission utilities. Driven by the catastrophic costs of unranked alarm floods, Emeka founded GridGuard AI to dematerialize operational blind spots into decisive, predictive maintenance intelligence.',
     },
     {
       name: 'Amina Bello',
